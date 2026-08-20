@@ -4,11 +4,7 @@ import sqlite3
 from groq import Groq
 from datetime import datetime
 import plotly.express as px
-# --- DIAGNÓSTICO DE SECRETOS ---
-st.write("Verificando secretos...")
-if "GROQ_API_KEY" in st.secrets:
-    st.success("¡Secreto encontrado!")
-else:
+
     st.error(f"Secretos disponibles: {list(st.secrets.keys())}")
 # -------------------------------
 # --- INICIALIZACIÓN SEGURA DE LA API DE GROQ ---
