@@ -5,7 +5,7 @@ from groq import Groq
 from datetime import datetime
 import plotly.express as px
 
-    st.error(f"Secretos disponibles: {list(st.secrets.keys())}")
+   
 # -------------------------------
 # --- INICIALIZACIÓN SEGURA DE LA API DE GROQ ---
 try:
