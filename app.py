@@ -5,15 +5,15 @@ from groq import Groq
 from datetime import datetime
 import plotly.express as px
 
-# ==========================================
-# 🔑 CONFIGURACIÓN DE LA API DE GROQ
-# ==========================================
-# Pega tu clave real aquí entre las comillas para que funcione de inmediato
-GROQ_API_KEY=" "
+# --- INICIALIZACIÓN SEGURA ---
+# Si estamos en la nube, toma el secreto. Si estamos local, usa una variable o una cadena vacía.
+api_key = st.secrets.get(" ")
 
-# Inicialización directa del cliente con tu clave
-client = Groq(api_key=GROQ_API_KEY.strip())
+if not api_key:
+    st.error("No se encontró la API Key en los secretos.")
+    st.stop()
 
+client = Groq(api_key=api_key)
 # Configuración inicial de la página
 st.set_page_config(
     page_title="NeoFinanzas Pro", 
