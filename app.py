@@ -5,24 +5,17 @@ from groq import Groq
 from datetime import datetime
 import plotly.express as px
 
-   
-# -------------------------------
-# --- INICIALIZACIÓN SEGURA DE LA API DE GROQ ---
+# --- INICIALIZACIÓN SEGURA ---
 try:
-    # Intenta leer desde los secrets de Streamlit Cloud
-    api_key = st.secrets[""]
+    api_key = st.secrets["GROQ_API_KEY"]
 except Exception:
-    # Si estás corriendo localmente en tu PC y no configuraste los secrets locales, 
-    # puedes poner tu clave aquí temporalmente para probar, o dejarla vacía.
-    api_key = "" 
+    api_key = ""
 
-if not api_key or api_key == "":
-    st.error("⚠️ No se encontró la API Key en los secretos de Streamlit Cloud. Configúrala en Settings -> Secrets.")
+if not api_key:
+    st.error("⚠️ No se encontró la API Key en los secretos de Streamlit Cloud. Configúrala en Settings → Secrets.")
     st.stop()
 
 client = Groq(api_key=api_key.strip())
-
-client = Groq(api_key=api_key)
 # Configuración inicial de la página
 st.set_page_config(
     page_title="NeoFinanzas Pro", 
